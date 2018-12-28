@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>EOS Grand</title>
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>EOS Grand</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <!-- 	<script src="./scatter-js/scatter.min.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/eosjs@15.0.3/lib/eos.min.js" integrity="sha512-QX0dPq5pyX33coEuy5x1UqKHFDeveQYMp7Sz+qOUwRL9mol4QDvViU+QAjd+k6P7QjPjrDCoyhK1kz2GDxCP9A==" crossorigin="anonymous"></script>
-	<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-core.min.js"></script>
-	<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-plugin-eosjs2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/eosjs@15.0.3/lib/eos.min.js" integrity="sha512-QX0dPq5pyX33coEuy5x1UqKHFDeveQYMp7Sz+qOUwRL9mol4QDvViU+QAjd+k6P7QjPjrDCoyhK1kz2GDxCP9A==" crossorigin="anonymous"></script>
+<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-core.min.js"></script>
+<script src="https://cdn.scattercdn.com/file/scatter-cdn/js/latest/scatterjs-plugin-eosjs2.min.js"></script>
+<style>
+div {
+	margin: 0 auto;
+	text-align: center;
+
+}
+</style>
 </head>
 <body>
-	<h2>Coming soon.</h2>
+	<div><h2>Coming soon.</h2></div>
 <script>
 
 const network = {
@@ -55,15 +62,19 @@ ScatterJS.scatter.connect("test", {initTimeout:2000}).then(connected => {
 
 	console.log('scatter', scatter);
 
-	scatter.getIdentity({accounts:[network]}).then(identity => {
-			const account = scatter.identity.accounts.find(x => x.blockchain === network.blockchain);
-			const eos = this.scatter.eos(network, Eos, config);
-			console.log("eos", eos);
-		},
-		function(error)
-		{
-			console.log("login failed")
-		});
+	$('h2').on('click', function ()
+	{
+		scatter.getIdentity({accounts:[network]}).then(identity => {
+				const account = scatter.identity.accounts.find(x => x.blockchain === network.blockchain);
+				const eos = this.scatter.eos(network, Eos, config);
+				console.log("eos", eos);
+			},
+			function(error)
+			{
+				console.log("login failed")
+			});
+	});
+
 });
 /**/
 
